@@ -2,6 +2,8 @@ package com.prac.graphql.domain.service;
 
 import com.prac.graphql.domain.entity.Member;
 import com.prac.graphql.domain.repository.MemberRepository;
+import com.prac.graphql.global.exception.BusinessLogicException;
+import com.prac.graphql.global.exception.ExceptionCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +20,7 @@ public class MemberService {
 
     public Member findMemberById(Long id) {
         Optional<Member> findMember = memberRepository.findById(id);
-        return findMember.orElseThrow(() -> new RuntimeException("회원이 없습니다."));
+        return findMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
     }
 
     public List<Member> findAllMember() {
