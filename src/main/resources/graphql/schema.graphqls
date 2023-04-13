@@ -21,8 +21,13 @@ type Shows{
 type Query{
     getMember(id: ID!): Member
     getMembers: [Member]
-    getMembersResponseDto(id: ID!): MemberResponseDto
-    getMembersResponseDtos: [MemberResponseDto]
+
+    getMemberResponseDto(id: ID!): MemberResponseDto
+    getMembersResponseDto: [MemberResponseDto]
+
+    getMemberBySchema(id: ID!): Member
+    getMembersBySchema: [Member]
+
     getShow(id: ID!): Shows
 }
 
@@ -30,6 +35,11 @@ type Query{
 # value 속성을 통해서 이름을 정해줄 수 있음
 type Mutation {
     postMember(
+        id : Int
+        name : String
+        age : Int
+    ): Member
+    postMemberByMutation(
         id : Int
         name : String
         age : Int

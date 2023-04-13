@@ -9,8 +9,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
+import javax.management.Query;
 import java.util.List;
 
 /*
@@ -40,13 +42,13 @@ public class MemberController {
     }
 
     @QueryMapping
-    public MemberResponseDto getMembersResponseDto(@Argument Long id){
+    public MemberResponseDto getMemberResponseDto(@Argument Long id){
         Member member = memberService.findMemberById(id);
         return memberMapper.memberToMemberResponseDto(member);
     }
 
     @QueryMapping
-    public List<MemberResponseDto> getMembersResponseDtos(){
+    public List<MemberResponseDto> getMembersResponseDto(){
         List<Member> allMember = memberService.findAllMember();
         return memberMapper.memberListToMemberResponseDtoList(allMember);
     }
@@ -59,6 +61,27 @@ public class MemberController {
     public Member postMember(@Argument String name,
                              @Argument Integer age){
 
+        Member member = memberMapper.toEntity(name, age);
+        return memberService.saveMember(member);
+    }
+
+    /*
+    *
+    *
+    * */
+    @SchemaMapping(typeName = "Query")
+    public Member getMemberBySchema(@Argument Long id) {
+        return memberService.findMemberById(id);
+    }
+
+    @SchemaMapping(typeName = "Query")
+    public List<Member> getMembersBySchema() {
+        return memberService.findAllMember();
+    }
+
+    @SchemaMapping(typeName = "Mutation")
+    public Member postMemberByMutation(@Argument String name,
+                                       @Argument Integer age){
         Member member = memberMapper.toEntity(name, age);
         return memberService.saveMember(member);
     }
