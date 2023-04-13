@@ -1,0 +1,10 @@
+type Member{
+    id: ID!
+    name: String!
+    age: Int!
+}
+
+type Query{
+    getMember(id: ID!): Member
+    getMembers: [Member]
+}
