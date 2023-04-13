@@ -2,7 +2,6 @@ package com.prac.graphql.domain.controller;
 
 import com.prac.graphql.domain.dto.MemberResponseDto;
 import com.prac.graphql.domain.entity.Member;
-import com.prac.graphql.domain.entity.Shows;
 import com.prac.graphql.domain.mapper.MemberMapper;
 import com.prac.graphql.domain.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +11,6 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
-import javax.management.Query;
 import java.util.List;
 
 /*
