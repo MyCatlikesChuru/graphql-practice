@@ -4,7 +4,34 @@ type Member{
     age: Int!
 }
 
+type MemberResponseDto{
+    id: ID!
+    name: String!
+    age: Int!
+}
+
+type Shows{
+    id: ID!
+    title: String!
+    content: String!
+}
+
+# @QueryMapping 메서드 이름과 동일
+# value 속성을 통해서 이름을 정해줄 수 있음
 type Query{
     getMember(id: ID!): Member
     getMembers: [Member]
+    getMembersResponseDto(id: ID!): MemberResponseDto
+    getMembersResponseDtos: [MemberResponseDto]
+    getShow(id: ID!): Shows
+}
+
+# @MutationMapping 메서드 이름과 동일
+# value 속성을 통해서 이름을 정해줄 수 있음
+type Mutation {
+    postMember(
+        id : Int
+        name : String
+        age : Int
+    ): Member
 }

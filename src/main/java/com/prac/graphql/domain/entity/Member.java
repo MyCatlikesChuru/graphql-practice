@@ -1,8 +1,6 @@
 package com.prac.graphql.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.stereotype.Controller;
 
 import javax.persistence.Entity;
@@ -12,6 +10,8 @@ import javax.persistence.Id;
 
 @Entity
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {
