@@ -66,8 +66,8 @@ public class MemberController {
     }
 
     /*
-    *
-    *
+    * @SchemaMapping
+    * -> @QueryMapping, @MutationMapping 를 선택하여 사용할 수 있음.
     * */
     @SchemaMapping(typeName = "Query")
     public Member getMemberBySchema(@Argument Long id) {
