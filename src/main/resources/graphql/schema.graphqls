@@ -21,6 +21,18 @@ type Query{
 
     getMemberBySchema(id: ID!): Member
     getMembersBySchema: [Member]
+
+    getMemberAdvance(
+        id : ID
+        search: String
+        category: String
+        address: String
+        filter: String
+        start: String
+        end: String
+        page: Int = 1
+        size: Int = 12
+    ): Member!
 }
 
 # @MutationMapping 메서드 이름과 동일
